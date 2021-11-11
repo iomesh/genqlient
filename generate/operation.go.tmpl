@@ -4,7 +4,7 @@ func {{.Name}}(
     ctx {{ref .Config.ContextType}},
     {{end}}
     {{- if not .Config.ClientGetter -}}
-    client {{ref "github.com/Khan/genqlient/graphql.Client"}},
+    client {{ref "github.com/iomesh/genqlient/graphql.Client"}},
     {{end}}
     {{- if .Input -}}
     {{- range .Input.Fields -}}

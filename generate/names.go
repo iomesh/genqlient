@@ -81,7 +81,7 @@ package generate
 //   can collide.
 // All cases seem fairly rare in practice; eventually we'll likely allow users
 // the ability to specify their own names, which they could use to avoid this
-// (see https://github.com/Khan/genqlient/issues/12).
+// (see https://github.com/iomesh/genqlient/issues/12).
 // TODO(benkraft): We should probably at least try to detect it and bail.
 //
 // To implement all of the above, as we traverse the operation (and schema) in

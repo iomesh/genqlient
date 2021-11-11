@@ -599,7 +599,7 @@ func (g *generator) convertSelectionSet(
 				// selection, so we can put this error on the right line.
 				return nil, errorf(nil,
 					"genqlient doesn't allow duplicate fields with different selections "+
-						"(see https://github.com/Khan/genqlient/issues/64); "+
+						"(see https://github.com/iomesh/genqlient/issues/64); "+
 						"duplicate field: %s.%s", containingTypedef.Name, field.JSONName)
 			default:
 				return nil, errorf(nil, "unexpected field-type: %T", field.GoType.Unwrap())

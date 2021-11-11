@@ -18,7 +18,7 @@ var cfgFilenames = []string{".genqlient.yml", ".genqlient.yaml", "genqlient.yml"
 // Callers must call ValidateAndFillDefaults before using the config.
 type Config struct {
 	// The following fields are documented at:
-	// https://github.com/Khan/genqlient/blob/main/docs/genqlient.yaml
+	// https://github.com/iomesh/genqlient/blob/main/docs/genqlient.yaml
 	Schema           StringList              `yaml:"schema"`
 	Operations       StringList              `yaml:"operations"`
 	Generated        string                  `yaml:"generated"`
@@ -42,7 +42,7 @@ type Config struct {
 
 // A TypeBinding represents a Go type to which genqlient will bind a particular
 // GraphQL type, and is documented further at:
-// https://github.com/Khan/genqlient/blob/main/docs/genqlient.yaml
+// https://github.com/iomesh/genqlient/blob/main/docs/genqlient.yaml
 type TypeBinding struct {
 	Type              string `yaml:"type"`
 	ExpectExactFields string `yaml:"expect_exact_fields"`
@@ -124,7 +124,7 @@ func ReadAndValidateConfigFromDefaultLocations() (*Config, error) {
 
 func initConfig(filename string) error {
 	// TODO(benkraft): Embed this config file into the binary, see
-	// https://github.com/Khan/genqlient/issues/9.
+	// https://github.com/iomesh/genqlient/issues/9.
 	r, err := os.Open(filepath.Join(thisDir, "default_genqlient.yaml"))
 	if err != nil {
 		return err

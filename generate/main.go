@@ -1,6 +1,6 @@
 // Package generate provides programmatic access to genqlient's functionality,
 // and documentation of its configuration options.  For general usage
-// documentation, see github.com/Khan/genqlient.
+// documentation, see github.com/iomesh/genqlient.
 package generate
 
 import (
@@ -58,12 +58,12 @@ type cliArgs struct {
 func (cliArgs) Description() string {
 	return strings.TrimSpace(`
 Generates GraphQL client code for a given schema and queries.
-See https://github.com/Khan/genqlient for full documentation.
+See https://github.com/iomesh/genqlient for full documentation.
 `)
 }
 
 // Main is the command-line entrypoint to genqlient; it's equivalent to calling
-// `go run github.com/Khan/genqlient`.  For lower-level control over
+// `go run github.com/iomesh/genqlient`.  For lower-level control over
 // genqlient's operation, see Generate.
 func Main() {
 	exitIfError := func(err error) {

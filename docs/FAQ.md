@@ -123,7 +123,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Khan/genqlient/generate"
+	"github.com/iomesh/genqlient/generate"
 	"github.com/suessflorian/gqlfetch"
 )
 

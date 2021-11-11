@@ -5,5 +5,5 @@ allow_broken_features: true
 bindings:
   Date:
     type: time.Time
-    marshaler: "github.com/Khan/genqlient/internal/testutil.MarshalDate"
-    unmarshaler: "github.com/Khan/genqlient/internal/testutil.UnmarshalDate"
+    marshaler: "github.com/iomesh/genqlient/internal/testutil.MarshalDate"
+    unmarshaler: "github.com/iomesh/genqlient/internal/testutil.UnmarshalDate"
