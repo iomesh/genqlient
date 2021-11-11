@@ -5,7 +5,7 @@ package test
 import (
 	"time"
 
-	"github.com/Khan/genqlient/graphql"
+	"github.com/iomesh/genqlient/graphql"
 )
 
 // __convertTimezoneInput is used internally by genqlient
@@ -53,4 +53,3 @@ query convertTimezone ($dt: DateTime!, $tz: String) {
 	)
 	return &retval, err
 }
-

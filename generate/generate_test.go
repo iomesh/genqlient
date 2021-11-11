@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/internal/testutil"
 	"gopkg.in/yaml.v2"
 )
 
@@ -83,20 +83,20 @@ func TestGenerate(t *testing.T) {
 				ExportOperations: queriesFilename,
 				ContextType:      "-",
 				Bindings: map[string]*TypeBinding{
-					"ID":       {Type: "github.com/Khan/genqlient/internal/testutil.ID"},
+					"ID":       {Type: "github.com/iomesh/genqlient/internal/testutil.ID"},
 					"DateTime": {Type: "time.Time"},
 					"Date": {
 						Type:        "time.Time",
-						Marshaler:   "github.com/Khan/genqlient/internal/testutil.MarshalDate",
-						Unmarshaler: "github.com/Khan/genqlient/internal/testutil.UnmarshalDate",
+						Marshaler:   "github.com/iomesh/genqlient/internal/testutil.MarshalDate",
+						Unmarshaler: "github.com/iomesh/genqlient/internal/testutil.UnmarshalDate",
 					},
 					"Junk":        {Type: "interface{}"},
 					"ComplexJunk": {Type: "[]map[string]*[]*map[string]interface{}"},
 					"Pokemon": {
-						Type:              "github.com/Khan/genqlient/internal/testutil.Pokemon",
+						Type:              "github.com/iomesh/genqlient/internal/testutil.Pokemon",
 						ExpectExactFields: "{ species level }",
 					},
-					"PokemonInput": {Type: "github.com/Khan/genqlient/internal/testutil.Pokemon"},
+					"PokemonInput": {Type: "github.com/iomesh/genqlient/internal/testutil.Pokemon"},
 				},
 				AllowBrokenFeatures: true,
 			})
@@ -168,7 +168,7 @@ func TestGenerateWithConfig(t *testing.T) {
 		}},
 		{"CustomContext", "", &Config{
 			Generated:   "generated.go",
-			ContextType: "github.com/Khan/genqlient/internal/testutil.MyContext",
+			ContextType: "github.com/iomesh/genqlient/internal/testutil.MyContext",
 		}},
 		{"NoContext", "", &Config{
 			Generated:   "generated.go",
@@ -176,16 +176,16 @@ func TestGenerateWithConfig(t *testing.T) {
 		}},
 		{"ClientGetter", "", &Config{
 			Generated:    "generated.go",
-			ClientGetter: "github.com/Khan/genqlient/internal/testutil.GetClientFromContext",
+			ClientGetter: "github.com/iomesh/genqlient/internal/testutil.GetClientFromContext",
 		}},
 		{"ClientGetterCustomContext", "", &Config{
 			Generated:    "generated.go",
-			ClientGetter: "github.com/Khan/genqlient/internal/testutil.GetClientFromMyContext",
-			ContextType:  "github.com/Khan/genqlient/internal/testutil.MyContext",
+			ClientGetter: "github.com/iomesh/genqlient/internal/testutil.GetClientFromMyContext",
+			ContextType:  "github.com/iomesh/genqlient/internal/testutil.MyContext",
 		}},
 		{"ClientGetterNoContext", "", &Config{
 			Generated:    "generated.go",
-			ClientGetter: "github.com/Khan/genqlient/internal/testutil.GetClientFromNowhere",
+			ClientGetter: "github.com/iomesh/genqlient/internal/testutil.GetClientFromNowhere",
 			ContextType:  "-",
 		}},
 	}
@@ -265,7 +265,7 @@ func TestGenerateErrors(t *testing.T) {
 					"ValidScalar":   {Type: "string"},
 					"InvalidScalar": {Type: "bogus"},
 					"Pokemon": {
-						Type:              "github.com/Khan/genqlient/internal/testutil.Pokemon",
+						Type:              "github.com/iomesh/genqlient/internal/testutil.Pokemon",
 						ExpectExactFields: "{ species level }",
 					},
 				},

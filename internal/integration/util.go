@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/Khan/genqlient/generate"
+	"github.com/iomesh/genqlient/generate"
 )
 
 // RepoRoot returns the root of the genqlient repository,

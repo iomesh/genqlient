@@ -5,8 +5,8 @@ package queries
 import (
 	"context"
 
-	"github.com/Khan/genqlient/graphql"
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/graphql"
+	"github.com/iomesh/genqlient/internal/testutil"
 )
 
 // Check that context_type from genqlient.yaml implements context.Context.
@@ -60,4 +60,3 @@ query SimpleQuery {
 	)
 	return &retval, err
 }
-

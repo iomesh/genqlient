@@ -7,7 +7,7 @@
 package main
 
 import (
-	"github.com/Khan/genqlient/generate"
+	"github.com/iomesh/genqlient/generate"
 )
 
 func main() {

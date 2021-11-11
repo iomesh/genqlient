@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/Khan/genqlient/graphql"
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/graphql"
+	"github.com/iomesh/genqlient/internal/testutil"
 )
 
 // ChildVideoFields includes the GraphQL fields of Video requested by the fragment ChildVideoFields.
@@ -316,4 +316,3 @@ fragment ChildVideoFields on Video {
 	)
 	return &retval, err
 }
-

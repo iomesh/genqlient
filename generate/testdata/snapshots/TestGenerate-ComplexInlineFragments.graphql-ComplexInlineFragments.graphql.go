@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/Khan/genqlient/graphql"
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/graphql"
+	"github.com/iomesh/genqlient/internal/testutil"
 )
 
 // ComplexInlineFragmentsConflictingStuffArticle includes the requested fields of the GraphQL type Article.
@@ -1446,4 +1446,3 @@ query ComplexInlineFragments {
 	)
 	return &retval, err
 }
-

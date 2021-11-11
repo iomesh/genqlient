@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/Khan/genqlient/graphql"
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/graphql"
+	"github.com/iomesh/genqlient/internal/testutil"
 )
 
 // InterfaceNestingResponse is returned by InterfaceNesting on success.
@@ -536,4 +536,3 @@ query InterfaceNesting {
 	)
 	return &retval, err
 }
-

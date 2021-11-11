@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Khan/genqlient/graphql"
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/graphql"
+	"github.com/iomesh/genqlient/internal/testutil"
 )
 
 // PointersQueryOtherUser includes the requested fields of the GraphQL type User.
@@ -264,4 +264,3 @@ query PointersQuery ($query: UserQueryInput, $dt: DateTime, $tz: String) {
 	)
 	return &retval, err
 }
-

@@ -5,7 +5,7 @@ package queries
 import (
 	"context"
 
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/internal/testutil"
 )
 
 // SimpleQueryResponse is returned by SimpleQuery on success.
@@ -59,4 +59,3 @@ query SimpleQuery {
 	)
 	return &retval, err
 }
-

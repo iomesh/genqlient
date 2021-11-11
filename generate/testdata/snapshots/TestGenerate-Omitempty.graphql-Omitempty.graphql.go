@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Khan/genqlient/graphql"
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/graphql"
+	"github.com/iomesh/genqlient/internal/testutil"
 )
 
 // OmitEmptyQueryResponse is returned by OmitEmptyQuery on success.
@@ -257,4 +257,3 @@ query OmitEmptyQuery ($query: UserQueryInput, $queries: [UserQueryInput], $dt: D
 	)
 	return &retval, err
 }
-

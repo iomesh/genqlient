@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Khan/genqlient/graphql"
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/graphql"
+	"github.com/iomesh/genqlient/internal/testutil"
 )
 
 // UserQueryInput is the argument to Query.users.
@@ -355,4 +355,3 @@ query MultipleDirectives ($query: UserQueryInput, $queries: [UserQueryInput]) {
 	)
 	return &retval, err
 }
-

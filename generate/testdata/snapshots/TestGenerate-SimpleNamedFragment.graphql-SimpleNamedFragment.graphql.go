@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/Khan/genqlient/graphql"
-	"github.com/Khan/genqlient/internal/testutil"
+	"github.com/iomesh/genqlient/graphql"
+	"github.com/iomesh/genqlient/internal/testutil"
 )
 
 // SimpleNamedFragmentRandomItemArticle includes the requested fields of the GraphQL type Article.
@@ -583,4 +583,3 @@ fragment VideoFields on Video {
 	)
 	return &retval, err
 }
-
