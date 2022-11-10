@@ -72,13 +72,21 @@ func expandFilenames(globs []string) ([]string, error) {
 		if err != nil {
 			return nil, errorf(nil, "can't expand file-glob %v: %v", glob, err)
 		}
+		if len(matches) == 0 {
+			return nil, errorf(nil, "%v did not match any files", glob)
+		}
 		for _, match := range matches {
-			uniqFilenames[match] = true
+			uniqFilenames[match] = false
 		}
 	}
+	// item should keep same order with original globs
 	filenames := make([]string, 0, len(uniqFilenames))
-	for filename := range uniqFilenames {
+	for _, filename := range globs {
+		if uniqFilenames[filename] {
+			continue
+		}
 		filenames = append(filenames, filename)
+		uniqFilenames[filename] = true
 	}
 	return filenames, nil
 }
