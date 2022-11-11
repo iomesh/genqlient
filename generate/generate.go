@@ -7,6 +7,7 @@ package generate
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"go/format"
 	"io"
 	"sort"
@@ -346,6 +347,7 @@ func Generate(config *Config) (map[string][]byte, error) {
 	// types it needs.
 	g := newGenerator(config, schema, document.Fragments)
 	for _, op := range document.Operations {
+		fmt.Println("op: ", op.Name)
 		if err = g.addOperation(op); err != nil {
 			return nil, err
 		}
