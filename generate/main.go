@@ -63,6 +63,8 @@ See https://github.com/Khan/genqlient for full documentation.
 `)
 }
 
+var hookName string
+
 // Main is the command-line entrypoint to genqlient; it's equivalent to calling
 //
 //	go run github.com/Khan/genqlient
@@ -87,6 +89,10 @@ func Main() {
 		err := initConfig(filename)
 		exitIfError(err)
 	}
+
+	hookName = os.Getenv("GENQLIENT_HOOK_NAME")
+	fmt.Println("start, hook name: ", hookName)
+
 	err := readConfigGenerateAndWrite(args.ConfigFilename)
 	exitIfError(err)
 }

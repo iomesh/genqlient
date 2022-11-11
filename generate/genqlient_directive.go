@@ -427,6 +427,8 @@ func (dir *genqlientDirective) mergeOperationDirective(
 		forField = operationDirective.FieldDirectives[typeName][field.Name]
 	case *ast.FieldDefinition: // input-type field
 		forField = operationDirective.FieldDirectives[parentIfInputField.Name][field.Name]
+	case *ast.VariableDefinition:
+		dir.FieldDirectives = operationDirective.FieldDirectives
 	}
 	// Just to simplify nil-checking in the code below:
 	if forField == nil {
@@ -476,6 +478,9 @@ func (g *generator) parsePrecedingComment(
 			line := strings.TrimSpace(sourceLines[i-1])
 			trimmed := strings.TrimSpace(strings.TrimPrefix(line, "#"))
 			if strings.HasPrefix(line, "# @genqlient") {
+				if len(hookName) > 0 && strings.Contains(trimmed, hookName) {
+					fmt.Println("****** parsePrecedingComment hit: # @genqlient  ", hookName)
+				}
 				hasDirective = true
 				var graphQLDirective *ast.Directive
 				graphQLDirective, err = parseDirective(trimmed, pos)

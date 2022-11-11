@@ -169,6 +169,10 @@ func (g *generator) convertArguments(
 			return nil, errorf(arg.Position, "variable name must not be a go keyword")
 		}
 
+		if len(hookName) > 0 && arg.Type.NamedType == hookName {
+			fmt.Println("****** convertArguments hit: ", hookName)
+		}
+
 		_, options, err := g.parsePrecedingComment(arg, nil, arg.Position, queryOptions)
 		if err != nil {
 			return nil, err
@@ -237,11 +241,29 @@ func (g *generator) convertType(
 		return &goOpaqueType{GoRef: goRef, GraphQLName: typ.Name()}, err
 	}
 
+	if len(hookName) > 0 && typ.NamedType == hookName {
+		fmt.Println("****** convertType hit: ", hookName)
+	}
+
 	if typ.Elem != nil {
+		// [String!]! -> `json:"xxx"`
+		// [String!]  -> `json:"xxx,omitempty"`
+		if options.Omitempty == nil && !typ.NonNull {
+			oe := true
+			options.Omitempty = &oe
+		}
+
 		// Type is a list.
 		elem, err := g.convertType(
 			namePrefix, typ.Elem, selectionSet, options, queryOptions)
 		return &goSliceType{elem}, err
+	}
+
+	// String! -> `json:"xxx"`
+	// String  -> `json:"xxx,omitempty"`
+	if options.Omitempty == nil && !typ.NonNull {
+		oe := true
+		options.Omitempty = &oe
 	}
 
 	// If this is a builtin type or custom scalar, just refer to it.
@@ -263,6 +285,7 @@ func (g *generator) convertType(
 		// Note this does []*T or [][]*T, not e.g. *[][]T.  See #16.
 		goTyp = &goPointerType{goTyp}
 	}
+
 	return goTyp, err
 }
 
@@ -414,11 +437,21 @@ func (g *generator) convertDefinition(
 			return nil, err
 		}
 
+		//str := ""
+		//for _, field := range def.Fields {
+		//	str += field.Type.NamedType + " "
+		//}
+		//fmt.Println("* "+def.Name, " :", str)
+
 		for i, field := range def.Fields {
 			_, fieldOptions, err := g.parsePrecedingComment(
 				field, def, field.Position, queryOptions)
 			if err != nil {
 				return nil, err
+			}
+
+			if name == hookName && field.Name == "window_start" {
+				fmt.Println("=========")
 			}
 
 			goName := upperFirst(field.Name)
