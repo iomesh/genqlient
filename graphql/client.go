@@ -10,8 +10,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/vektah/gqlparser/v2/gqlerror"
 )
 
 // Client is the interface that the generated code calls into to actually make
@@ -131,7 +129,7 @@ type Request struct {
 type Response struct {
 	Data       interface{}            `json:"data"`
 	Extensions map[string]interface{} `json:"extensions,omitempty"`
-	Errors     gqlerror.List          `json:"errors,omitempty"`
+	Errors     ErrorList              `json:"errors,omitempty"`
 }
 
 func (c *client) MakeRequest(ctx context.Context, req *Request, resp *Response) error {
