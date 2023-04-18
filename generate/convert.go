@@ -472,6 +472,12 @@ func (g *generator) convertDefinition(
 				return nil, err
 			}
 
+			// If the type inside a slice is a pointer, it will automatically be tagged with the omitempty flag (Line 278).
+			// This is not expected in required slice, so clear the omitempty marker in this case.
+			if field.Type.Elem != nil && field.Type.NonNull {
+				fieldOptions.Omitempty = nil
+			}
+
 			goType.Fields[i] = &goStructField{
 				GoName:      goName,
 				GoType:      fieldGoType,
