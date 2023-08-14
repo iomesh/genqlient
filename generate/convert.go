@@ -256,7 +256,14 @@ func (g *generator) convertType(
 		// Type is a list.
 		elem, err := g.convertType(
 			namePrefix, typ.Elem, selectionSet, options, queryOptions)
-		return &goSliceType{elem}, err
+
+		var goTyp goType = &goSliceType{elem}
+
+		if options.GetPointer() {
+			goTyp = &goPointerType{goTyp}
+		}
+
+		return goTyp, err
 	}
 
 	// String! -> `json:"xxx"`
